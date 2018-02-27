@@ -15,10 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN cd /opt && \
     wget -O - ftp://ftp.broadinstitute.org/pub/crd/ALLPATHS/Release-LG/latest_source_code/allpathslg-52488.tar.gz | tar zx && \
-    cd allpathslg-52488 && ./configure && make && make install
-
-RUN apt-get autoremove -y make wget && \
+    cd allpathslg-52488 && ./configure && make && make install && \
+    apt-get autoremove -y make wget && \
     rm -rf /var/lib/apt/lists/* && apt-get clean && \
     rm -rf /opt/allpathslg-52488
-
- 
