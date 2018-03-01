@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     perl \
     unzip \
+    ca-certificates \
     graphviz && \
     update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 10 && \
     update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 10
@@ -22,6 +23,6 @@ RUN cd /opt && \
     wget -O - ftp://ftp.broadinstitute.org/pub/crd/ALLPATHS/Release-LG/latest_source_code/allpathslg-52488.tar.gz | tar zx && \
     cd allpathslg-52488 && ./configure && make && make install && \
     rm -rf /opt/allpathslg-52488 && \
-    apt-get autoremove -y make wget && \
+    apt-get autoremove -y make wget unzip ca-certificates && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
